@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "./Signup";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
+import {  Button,  Checkbox,  Flex,  FormControl,  FormLabel,  Heading,  Input,  Link,  Stack,  Image,} from '@chakra-ui/react';
+
 
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
@@ -38,41 +40,59 @@ export default function LogIn({ authenticate }) {
 
   return (
     <div>
-      <h1>Log In</h1>
-      <form onSubmit={handleFormSubmission} className="signup__form">
-        <label htmlFor="input-username">Username</label>
-        <input
-          id="input-username"
+     <form onSubmit={handleFormSubmission} className="signup__form">
+     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+      <Flex p={8} flex={1} align={'center'} justify={'center'}>
+        <Stack spacing={4} w={'full'} maxW={'md'}>
+          <Heading fontSize={'2xl'} color={'purple.500'}>Login in to your account</Heading>
+          <FormControl id="username">
+            <FormLabel>User Name</FormLabel>
+            <Input id="input-username"
           type="text"
           name="username"
           placeholder="username"
           value={username}
           onChange={handleInputChange}
-          required
-        />
-
-        <label htmlFor="input-password">Password</label>
-        <input
-          id="input-password"
+          required/>
+      </FormControl>
+          <FormControl id="password">
+            <FormLabel>Password</FormLabel>
+            <Input id="input-password"
           type="password"
           name="password"
           placeholder="Password"
           value={password}
           onChange={handleInputChange}
           required
-          minLength="8"
-        />
-
-        {error && (
+          minLength="8" />
+           {error && (
           <div className="error-block">
             <p>There was an error submiting the form:</p>
             <p>{error.message}</p>
           </div>
         )}
 
-        <button className="button__submit" type="submit">
-          Submit
-        </button>
+          </FormControl>
+          <Stack spacing={6}>
+            <Stack
+              direction={{ base: 'column', sm: 'row' }}
+              align={'start'}
+              justify={'space-between'}>
+              <Checkbox>Remember me</Checkbox>
+              <Link color={'purple.500'}>Forgot password?</Link>
+            </Stack>
+            <Button colorScheme={'purple'} variant={'solid'}>
+              Sign in
+            </Button>
+          </Stack>
+        </Stack>
+      </Flex>
+      <Flex flex={1}>
+        <img src="../images/login.jpg" width={650} height={500}></img>
+      </Flex>
+    </Stack>
+  ;
+
       </form>
     </div>
   );
