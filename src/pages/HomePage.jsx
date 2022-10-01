@@ -1,14 +1,17 @@
 import "../App.css";
 
+import React from 'react';
+import Slider from "../components/Slider/index"
 
 
-
-function HomePage() {
+export default function HomePage() {
   return (
     <div className="App">
-        <h1 className="header"> <strong>Creamos pensando en ti</strong></h1>
+      <Slider/>
+        
+
     </div>    
   );
 }
 
-export default HomePage;
+

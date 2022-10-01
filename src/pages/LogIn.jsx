@@ -5,7 +5,7 @@ import "./Signup";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import {  Button,  Checkbox,  Flex,  FormControl,  FormLabel,  Heading,  Input,  Link,  Stack,  Image,} from '@chakra-ui/react';
-
+import LoginImagen from "../images/login.jpg"
 
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
@@ -88,7 +88,7 @@ export default function LogIn({ authenticate }) {
         </Stack>
       </Flex>
       <Flex flex={1}>
-        <img src="../images/login.jpg" width={650} height={500}></img>
+        <img src={LoginImagen} width={650} height={500}/>
       </Flex>
     </Stack>
   ;
