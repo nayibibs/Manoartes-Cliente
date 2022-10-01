@@ -69,12 +69,12 @@ export default function Signup({ authenticate }) {
                 <FormControl id="firstName" isRequired>
                   <FormLabel>First Name</FormLabel>
                   <Input id="input-username"
-          type="text"
-          name="username"
-          placeholder="Text"
-          value={username}
-          onChange={handleInputChange}
-          required />
+                    type="text"
+                    name="username"
+                    placeholder="Text"
+                    value={username}
+                    onChange={handleInputChange}
+                    required />
                 </FormControl>
               </Box>
               <Box>
@@ -93,17 +93,17 @@ export default function Signup({ authenticate }) {
               <InputGroup>
                 <Input type={showPassword ? 'text' : 'password'}  id="input-password"
                    name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handleInputChange}
-          required
-          minLength="8"/>
+                   placeholder="Password"
+                   value={password}
+                   onChange={handleInputChange}
+                   required
+                   minLength="8"/>
                   {error && (
-          <div className="error-block">
-            <p>There was an error submiting the form:</p>
-            <p>{error.message}</p>
-          </div>
-        )}
+                    <div className="error-block">
+                      <p>There was an error submiting the form:</p>
+                      <p>{error.message}</p>
+                    </div>
+                  )}
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}

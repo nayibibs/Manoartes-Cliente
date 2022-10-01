@@ -248,7 +248,7 @@ const NAV_ITEMS = [
       {
         label: 'Hogar',
         subLabel: 'Descubre lo que necesitas',
-        href: '#',
+        href: '/artesania',
       },
       {
         label: 'Regreso a la escuela',
@@ -265,7 +265,7 @@ const NAV_ITEMS = [
     children: [
       {
         label: 'Un sabor, un estilo',
-        href: '#',
+        href: '/todocafe',
       },
       
     ],

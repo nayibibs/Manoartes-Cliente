@@ -8,6 +8,7 @@ import * as USER_HELPERS from "./utils/userToken";
 import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
 import Signup from "./pages/Signup";
+import TodoCafe from "./pages/TodoCafe";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -55,6 +56,7 @@ export default function App() {
   return (
     <div className="App">
       <Navbar handleLogout={handleLogout} user={user} />
+      
       <Routes>
         {/*routes({ user, authenticate, handleLogout }).map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
@@ -62,6 +64,7 @@ export default function App() {
         <Route path="/" element={<HomePage/>}/>
         <Route path="/auth/login" element={<LogIn/>}/>
         <Route path="/auth/signup" element={<Signup/>}/>
+        <Route path="/todocafe" element={<TodoCafe/>}/>
       </Routes>
     </div>
   );
