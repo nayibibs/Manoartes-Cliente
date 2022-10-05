@@ -12,8 +12,9 @@ export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
+    email: "",
   });
-  const { username, password } = form;
+  const { username, password, email } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -27,6 +28,7 @@ export default function Signup({ authenticate }) {
     const credentials = {
       username,
       password,
+      email,
     };
     signup(credentials).then((res) => {
       if (!res.status) {
@@ -51,11 +53,11 @@ export default function Signup({ authenticate }) {
       minH={'100vh'}
       align={'center'}
       justify={'center'}
-      bg={useColorModeValue('purple.50', 'purple.800')}>
+      bg={useColorModeValue('purple.100', 'purple.800')}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'} textAlign={'center'}>
-            Sign up
+          <Heading fontSize={'4xl'} textAlign={'center'} color="purple.800">
+           ¡Inscribete ya!
           </Heading>
           </Stack>
         <Box
@@ -67,7 +69,7 @@ export default function Signup({ authenticate }) {
             <HStack>
               <Box>
                 <FormControl id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
+                  <FormLabel>Nombre</FormLabel>
                   <Input id="input-username"
                     type="text"
                     name="username"
@@ -79,14 +81,14 @@ export default function Signup({ authenticate }) {
               </Box>
               <Box>
                 <FormControl id="lastName">
-                  <FormLabel>Last Name</FormLabel>
-                  <Input type="text" />
+                  <FormLabel>Apellido</FormLabel>
+                  <Input type="text" name="Last Name"  placeholder="text"/>
                 </FormControl>
               </Box>
             </HStack>
             <FormControl id="email" isRequired>
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <FormLabel>Email</FormLabel>
+              <Input type="email" name="email"  value={email} placeholder="email"  onChange={handleInputChange}/>
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password </FormLabel>
@@ -100,7 +102,7 @@ export default function Signup({ authenticate }) {
                    minLength="8"/>
                   {error && (
                     <div className="error-block">
-                      <p>There was an error submiting the form:</p>
+                      <p>Hubo un error al enviar el formulario:</p>
                       <p>{error.message}</p>
                     </div>
                   )}
@@ -123,12 +125,12 @@ export default function Signup({ authenticate }) {
                 _hover={{
                   bg: 'purple.500',
                 }}>
-          Submit
+          Registrate!
         </Button>
             </Stack>
             <Stack pt={6}>
               <Text align={'center'}>
-                Already a user? <Link color={'purple.400'}>Login</Link>
+              ¿Ya eres usuario? <Link href="/auth/login" color={'purple.500'}>Acceder</Link>
               </Text>
             </Stack>
           </Stack>

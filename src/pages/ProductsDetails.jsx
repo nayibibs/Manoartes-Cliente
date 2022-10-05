@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import React from 'react'
 import {
     Badge,
@@ -6,16 +10,48 @@ import {
     Flex,
     Heading,
     Image,
-    Link,
     Stack,
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
-  import Card1 from "../images/card1.jpg"
+
+
+
+ 
+const API_URL = "http://localhost:5005"
+
+function ProductsDetails (props) {
+  const [productos, setProductos] = useState(null);
+  const { productoId } = useParams(); 
+ 
+  const getProductos = () => {          
+    axios
+      .get(`${API_URL}/api/productosbase/${productoId}`)
+      .then((response) => {
+        const oneProducto = response.data;
+        setProductos(oneProducto);
+      })
+      .catch((error) => console.log(error));
+  };
   
-  export default function TodoCafe() {
-    return (
-      <Center py={6}>
+  
+  useEffect(()=> {               
+    getProductos();
+  }, [] );
+
+  return (
+    <div className="ProductsDetails">
+      {productos && (
+        <>
+          <h1>{productos.title}</h1>
+          <p>{productos.description}</p>
+          
+            </>
+        
+      )}
+      <div className='TodoCafe'>
+      <Center py={6} className="cafe">
+        
         <Stack
           borderWidth="1px"
           borderRadius="lg"
@@ -24,14 +60,16 @@ import {
           direction={{ base: 'column', md: 'row' }}
           bg={useColorModeValue('purple.100', 'purple.900')}
           boxShadow={'2xl'}
-          padding={4}>
+          padding={4}
+          >
           <Flex flex={1} bg="purple.200">
             <Image
               objectFit="cover"
               boxSize="100%"
-              src={Card1}
+              src={props.img}
             />
           </Flex>
+        
           <Stack
             flex={1}
             flexDirection="column"
@@ -40,13 +78,13 @@ import {
             p={1}
             pt={2}>
             <Heading fontSize={'2xl'} fontFamily={'body'}>
-              Café para 4
+              {props.title}
             </Heading>
             <Text
               textAlign={'center'}
-              color={useColorModeValue('gray.700', 'gray.400')}
+              color={useColorModeValue('purple.700', 'purple.400')}
               px={3}>
-              Mini bandeja con 4 tasitas de café
+              {props.description}
            </Text>
             <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
               <Badge
@@ -90,28 +128,37 @@ import {
                 _hover={{
                     bg: 'purple.500'
                 }}>
-                Message
+                Mensaje
               </Button>
-              <Button
-                flex={1}
-                fontSize={'sm'}
-                rounded={'full'}
-                bg={'purple.400'}
-                color={'pink.100'}
-                boxShadow={
-                  '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-                }
-                _hover={{
-                  bg: 'purple.500',
-                }}
-                _focus={{
-                  bg: 'purple.500',
-                }}>
-                Follow
-              </Button>
+             
             </Stack>
           </Stack>
+          
         </Stack>
       </Center>
-    );
-  }
+      
+              
+      </div>
+      
+ 
+      <Link to={`/productosbase/edit/${productoId}`}>
+      <Stack direction='column' spacing={2} align='center'>
+      
+      <Button  type="submit" colorScheme='purple' variant='solid'>
+         Editar
+  </Button>
+  /</Stack>
+      </Link> 
+      <br/>
+      <Link to="/productosbase">
+      <Stack direction='column' spacing={2} align='center'>
+      <Button  type="submit" colorScheme='purple' variant='solid'>
+         Regresar
+  </Button>
+  /</Stack>
+      </Link>
+    </div>
+  );
+}
+ 
+export default ProductsDetails;

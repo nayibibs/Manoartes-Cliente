@@ -23,9 +23,9 @@ import {
 } from '@chakra-ui/icons';
 import Logo1 from "../../images/logo1.png"
 
-export default function WithSubnavigation() {
+export default function WithSubnavigation(props) {
   const { isOpen, onToggle } = useDisclosure();
-
+  const { user, handleLogout}  = props
   return (
     <Box>
       <Flex
@@ -58,8 +58,10 @@ export default function WithSubnavigation() {
             <DesktopNav />
           </Flex>
         </Flex>
-
-        <Stack
+            {user?.username}
+            {user && <Button margin={"0 0px 0 20px"} colorScheme='purple' size='sm' onClick={handleLogout}> Log out </Button>}
+            {!user &&   
+                 <Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
           direction={'row'}
@@ -78,15 +80,17 @@ export default function WithSubnavigation() {
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
             fontWeight={600}
-            color={'purple.200'}
-            bg={'purple.100'}
+            color={'purple.700'}
+            bg={'purple.200'}
             href={'/auth/signup'}
             _hover={{
               bg: 'purple.400',
             }}>
             Sign Up
           </Button>
-        </Stack>
+          
+        </Stack>}
+ 
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -98,8 +102,8 @@ export default function WithSubnavigation() {
 
 const DesktopNav = () => {
   const linkColor = useColorModeValue('purple.600', 'purple.200');
-  const linkHoverColor = useColorModeValue('purple.800', 'purple.100');
-  const popoverContentBgColor = useColorModeValue('purple.600', 'purple.800');
+  const linkHoverColor = useColorModeValue('purple.400', 'purple.100');
+  const popoverContentBgColor = useColorModeValue('purple.100', 'purple.800');
 
   return (
     <Stack direction={'row'} spacing={4}>
@@ -250,26 +254,29 @@ const NAV_ITEMS = [
         subLabel: 'Descubre lo que necesitas',
         href: '/artesania',
       },
-      {
-        label: 'Regreso a la escuela',
-        href: '#',
-      },
-      {
-        label: 'Proyectos para ti',
-        href: '#',
-      },
-    ],
-  },
-  {
-    label: 'Todo Café',
-    children: [
-      {
-        label: 'Un sabor, un estilo',
-        href: '/todocafe',
-      },
+   
       
     ],
   },
-  
+  {
+    label: 'Proyectos para ti',
+    children: [
+      {
+        label: 'Un detalle, un estilo',
+        href: '/productosbase',
+      },
+   
+    ],
+  },
+  {
+    label: 'Detalles de Pedidos',
+    children: [
+      {
+        label: 'Productos pedidos',
+        href: '/details',
+      },
+   
+    ],
+  },
   
 ];

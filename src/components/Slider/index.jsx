@@ -62,8 +62,8 @@ export default function CaptionCarousel() {
   return (
     <Box
       position={'relative'}
-      height={'600px'}
       width={'full'}
+      height={'full'}
       overflow={'hidden'}>
       {/* CSS files for react-slick */}
       <link
@@ -124,7 +124,7 @@ export default function CaptionCarousel() {
                 w={'full'}
                 maxW={'lg'}
                 position="absolute"
-                top="50%"
+                top="100%"
                 transform="translate(0, -50%)">
                 <Heading fontSize={{ base: '3xl', md: '4xl', lg: '6xl' }} color="white">
                   {card.title}

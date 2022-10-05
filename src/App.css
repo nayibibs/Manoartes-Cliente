@@ -1,6 +1,10 @@
+
+
 .App {
   text-align: center;
   background: url('./images/background.jpg');
+  height: 100%;
+  
 }
 
 .loko{
@@ -12,7 +16,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  margin-left: -675px;
+  margin-left: -845px;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
 }
@@ -32,6 +36,58 @@
 
 .icon:hover{
   color: rgb(154, 42, 177);
+}
+
+/*-----------ttodo cafe  --------------*/
+
+.TodoCafe{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction:column-reverse;
+  
+  padding: 20px;
+  margin: 20px;
+  width: 100%;
+  
+}
+
+
+.artesanias{
+  padding: 250px;
+}
+
+.btn{
+  padding: 20px;
+  background-color:rgb(175, 112, 207);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  width: 20%;
+  color: #fff;
+  text-transform: uppercase;
+  margin: auto;
+}
+
+.AddProducts{
+  padding: 100px ;
+  
+}   
+
+
+footer{
+  width: 100%;
+  margin-top: 40px;
+}
+
+.css-r8jw1s{
+  width: 50% !important;
+  max-width: 100px !important;
+  margin: auto !important;
+}
+
+.services{
+  margin: 100px 0;
 }
 
 

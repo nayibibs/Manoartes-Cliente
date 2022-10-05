@@ -44,9 +44,9 @@ export default function LogIn({ authenticate }) {
      <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex p={8} flex={1} align={'center'} justify={'center'}>
         <Stack spacing={4} w={'full'} maxW={'md'}>
-          <Heading fontSize={'2xl'} color={'purple.500'}>Login in to your account</Heading>
+          <Heading fontSize={'2xl'} color={'purple.500'}>Inicie sesión en su cuenta</Heading>
           <FormControl id="username">
-            <FormLabel>User Name</FormLabel>
+            <FormLabel>Nombre de usuario</FormLabel>
             <Input id="input-username"
           type="text"
           name="username"
@@ -67,7 +67,7 @@ export default function LogIn({ authenticate }) {
           minLength="8" />
            {error && (
           <div className="error-block">
-            <p>There was an error submiting the form:</p>
+            <p>Hubo un error al enviar el formulario:</p>
             <p>{error.message}</p>
           </div>
         )}
@@ -78,17 +78,16 @@ export default function LogIn({ authenticate }) {
               direction={{ base: 'column', sm: 'row' }}
               align={'start'}
               justify={'space-between'}>
-              <Checkbox>Remember me</Checkbox>
-              <Link color={'purple.500'}>Forgot password?</Link>
+              <Checkbox>Recuerdame</Checkbox>
             </Stack>
             <Button colorScheme={'purple'} variant={'solid'}>
-              Sign in
+            Iniciar sesión
             </Button>
           </Stack>
         </Stack>
       </Flex>
       <Flex flex={1}>
-        <img src={LoginImagen} width={650} height={500}/>
+        <img src={LoginImagen}  width={800} height={500}/>
       </Flex>
     </Stack>
   ;
