@@ -57,7 +57,7 @@ function AddProductos(props) {
         setImageUrl("")
         setPrice("")
         setMaterials("")
-        props.refreshProductos(); 
+        
       })
 
       .catch((error) => console.log(error));
