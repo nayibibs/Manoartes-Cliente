@@ -90,4 +90,10 @@ footer{
   margin: 100px 0;
 }
 
+.ProductList{
+  margin: 50px !important;
+}
 
+.ProductoCard{
+  margin: 20px !important;
+}

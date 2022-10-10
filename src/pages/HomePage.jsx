@@ -4,6 +4,7 @@ import Slider from "../components/Slider/index"
 import { Box, SimpleGrid, Icon, Text, Stack, Flex } from '@chakra-ui/react';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
 import Footer from "../components/Footer/index"
+import About from "../components/About";
 
 
 
@@ -29,12 +30,11 @@ const Feature = ({ title, text, icon }) => {
 
 export default function HomePage() {
  
- 
-  
-
   return (
     <div className="App">
       <Slider/>
+      
+      <About/>
       <Box  >
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={20} mx={20} className="services">
         <Feature

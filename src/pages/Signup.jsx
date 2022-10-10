@@ -5,7 +5,8 @@ import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
 import {  Flex,  Box,  FormControl,  FormLabel,  Input,  InputGroup,  HStack,  InputRightElement,  Stack,  Button,
-  Heading,  Text,  useColorModeValue,  Link,} from '@chakra-ui/react';
+  Heading,  Text,  useColorModeValue,  Link, Accordion,
+  } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 export default function Signup({ authenticate }) {
@@ -13,6 +14,7 @@ export default function Signup({ authenticate }) {
     username: "",
     password: "",
     email: "",
+    
   });
   const { username, password, email } = form;
   const [error, setError] = useState(null);
@@ -29,6 +31,7 @@ export default function Signup({ authenticate }) {
       username,
       password,
       email,
+      
     };
     signup(credentials).then((res) => {
       if (!res.status) {
@@ -79,13 +82,7 @@ export default function Signup({ authenticate }) {
                     required />
                 </FormControl>
               </Box>
-              <Box>
-                <FormControl id="lastName">
-                  <FormLabel>Apellido</FormLabel>
-                  <Input type="text" name="Last Name"  placeholder="text"/>
-                </FormControl>
-              </Box>
-            </HStack>
+              </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email</FormLabel>
               <Input type="email" name="email"  value={email} placeholder="email"  onChange={handleInputChange}/>

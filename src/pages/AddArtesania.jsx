@@ -37,7 +37,7 @@ function AddArtesania (){
     e.preventDefault();
 
     service
-      .createArtesania({ title, description, imageUrl,})
+      .createArtesania({ title, description, imageUrl})
       .then(res => {
         
 
@@ -63,7 +63,7 @@ function AddArtesania (){
      
       <Stack spacing={4}>
       
-      <Input type='text' placeholder='title' value={title} 
+      <Input type='text' placeholder='titulo' value={title} 
           onChange={(e) => setTitle(e.target.value)}/>
       
       <Input type='text' placeholder='description' value={description} 

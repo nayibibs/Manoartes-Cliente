@@ -23,7 +23,7 @@ import {
 } from '@chakra-ui/icons';
 import Logo1 from "../../images/logo1.png"
 
-export default function WithSubnavigation(props) {
+export default function NavBar(props) {
   const { isOpen, onToggle } = useDisclosure();
   const { user, handleLogout}  = props
   return (
@@ -262,8 +262,12 @@ const NAV_ITEMS = [
     label: 'Proyectos para ti',
     children: [
       {
-        label: 'Un detalle, un estilo',
+        label: 'Lista de Productos',
         href: '/productosbase',
+      },
+       {
+        label: 'Añadir un nuevo producto',
+        href: '/productosbase/add',
       },
    
     ],

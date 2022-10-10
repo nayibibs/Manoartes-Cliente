@@ -11,9 +11,10 @@ import Signup from "./pages/Signup";
 import AddArtesania from "./pages/AddArtesania";
 import ProductList from "./pages/ProductList";
 import DetallesDePedidos from "./pages/Details"
-import AddProductos from "./pages/AddProducts";
+import AddProductos from "./pages/AddProducts"
 import ProductsDetails from "./pages/ProductsDetails";
 import EditProducts from "./pages/EditProducts";
+import Comments from "./components/Comments"
 
 
 export default function App() {
@@ -72,9 +73,10 @@ export default function App() {
         <Route path="/auth/login" element={<LogIn/>}/>
         <Route path="/auth/signup" element={<Signup authenticate={authenticate}/>}/>
         <Route path="/productosbase" element={<ProductList/>}/>
-        <Route path="/productosbase" element={<AddProductos/>}/>
+        <Route path="/productosbase/add" element={<AddProductos/>}/>
         <Route path="/productosbase/:productoId" element={<ProductsDetails/>}/>
         <Route path="/productosbase/edit/:productoId" element={<EditProducts/>}/>
+        <Route path="/productosbase/:productoId/comments" element={<Comments/>}/>
         <Route path="/artesania" element={<AddArtesania/>}/>
         <Route path="/details" element={<DetallesDePedidos/>}/>        
       </Routes>

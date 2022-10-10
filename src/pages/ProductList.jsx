@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import AddProductos from "./AddProducts";
-import { Heading } from "@chakra-ui/react";
+import CardProducts from "../components/CardProducts";
+import { Heading,Badge, Box, SimpleGrid, Button } from "@chakra-ui/react";
+
+
 
  
-const API_URL = "http://localhost:5005";
+const API_URL = `${process.env.REACT_APP_SERVER_MY_URL}`;
  
  
 function ProductList() {
@@ -24,20 +26,20 @@ function ProductList() {
     getAllProductos();
   }, [] );
  
-  
+ 
   return (
     <div className="ProductList">
-      <AddProductos refreshProductos={getAllProductos} />
+         
+      <Heading as='h5' size='lg' color="purple.500">LISTA DE PRODUCTOS</Heading>
+      <SimpleGrid columns={3} m={"40px"} >
+      
         {productos.map((productos) => {
           return (
-            <div className="ProductoCard" key={productos._id} >
-              <Link to={`/productosbase/${productos._id}`}>
-              <Heading as='h5' size='sm' color="purple.500">{productos.title}</Heading>
-            </Link>
-            </div>
+          <CardProducts key={productos._id} {...productos}></CardProducts>
+      
           );
         })}     
-       
+        </SimpleGrid>
     </div>
   );
 }

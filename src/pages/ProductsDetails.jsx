@@ -3,24 +3,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import React from 'react'
-import {
-    Badge,
-    Button,
-    Center,
-    Flex,
-    Heading,
-    Image,
-    Stack,
-    Text,
-    useColorModeValue,
-  } from '@chakra-ui/react';
-
-
+import { Button, Stack, Center, Flex, Heading, Text, Badge,} from '@chakra-ui/react';
 
  
-const API_URL = "http://localhost:5005"
+const API_URL = `${process.env.REACT_APP_SERVER_MY_URL}`
 
-function ProductsDetails (props) {
+function ProductsDetails () {
   const [productos, setProductos] = useState(null);
   const { productoId } = useParams(); 
  
@@ -41,17 +29,9 @@ function ProductsDetails (props) {
 
   return (
     <div className="ProductsDetails">
-      {productos && (
-        <>
-          <h1>{productos.title}</h1>
-          <p>{productos.description}</p>
-          
-            </>
-        
-      )}
-      <div className='TodoCafe'>
-      <Center py={6} className="cafe">
-        
+     {productos  && ( 
+       <>
+       <Center py={6} className="cafe">
         <Stack
           borderWidth="1px"
           borderRadius="lg"
@@ -66,10 +46,11 @@ function ProductsDetails (props) {
             <Image
               objectFit="cover"
               boxSize="100%"
-              src={props.img}
+              aling="center"
+              src={productos.imgenUrl}
+              alt={"product image"}
             />
           </Flex>
-        
           <Stack
             flex={1}
             flexDirection="column"
@@ -78,38 +59,26 @@ function ProductsDetails (props) {
             p={1}
             pt={2}>
             <Heading fontSize={'2xl'} fontFamily={'body'}>
-              {props.title}
+              {productos.title}
             </Heading>
             <Text
               textAlign={'center'}
-              color={useColorModeValue('purple.700', 'purple.400')}
+              color={useColorModeValue('gray.700', 'gray.400')}
               px={3}>
-              {props.description}
+              {productos.description}
            </Text>
-            <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-              <Badge
-                px={2}
-                py={1}
-                bg={useColorModeValue('purple.50', 'purple.800')}
-                fontWeight={'400'}>
-                #art
-              </Badge>
-              <Badge
-                px={2}
-                py={1}
-                bg={useColorModeValue('purple.50', 'purple.800')}
-                fontWeight={'400'}>
-                #lovecafe
-              </Badge>
-              <Badge
-                px={2}
-                py={1}
-                bg={useColorModeValue('purple.50', 'purple.800')}
-                fontWeight={'400'}>
-                #manualidades
-              </Badge>
-            </Stack>
-  
+           <Text
+              textAlign={'center'}
+              color={useColorModeValue('gray.700', 'gray.400')}
+              px={3}> $
+              {productos.price}
+           </Text>
+           <Text
+              textAlign={'center'}
+              color={useColorModeValue('gray.700', 'gray.400')}
+              px={3}> 
+              {productos.materials}
+           </Text>
             <Stack
               width={'100%'}
               mt={'2rem'}
@@ -117,30 +86,17 @@ function ProductsDetails (props) {
               padding={2}
               justifyContent={'space-between'}
               alignItems={'center'}>
-              <Button
-                flex={1}
-                fontSize={'sm'}
-                rounded={'full'}
-                color={'purple.500'}
-                _focus={{
-                  bg: 'purple.200',
-                }}
-                _hover={{
-                    bg: 'purple.500'
-                }}>
-                Mensaje
-              </Button>
-             
+           
             </Stack>
           </Stack>
-          
         </Stack>
       </Center>
-      
-              
-      </div>
-      
- 
+
+       
+       
+       
+       </>
+     )}
       <Link to={`/productosbase/edit/${productoId}`}>
       <Stack direction='column' spacing={2} align='center'>
       
@@ -149,14 +105,22 @@ function ProductsDetails (props) {
   </Button>
   /</Stack>
       </Link> 
-      <br/>
-      <Link to="/productosbase">
-      <Stack direction='column' spacing={2} align='center'>
+      
+      <Stack
+              width={'100%'}
+              mt={'2rem'}
+              direction={'center'}
+              padding={2}
+              justifyContent={'center'}
+              alignItems={'center'}>
+        <Link to="/productosbase">
+      
       <Button  type="submit" colorScheme='purple' variant='solid'>
          Regresar
-  </Button>
-  /</Stack>
+     </Button>
+ 
       </Link>
+     /</Stack>
     </div>
   );
 }

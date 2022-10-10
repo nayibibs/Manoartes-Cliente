@@ -2,7 +2,7 @@ import axios from "axios";
  
 const api = axios.create({
   // make sure you use PORT = 5005 (the port where our server is running)
-  baseURL: "http://localhost:5005/api"
+  baseURL: `${process.env.REACT_APP_SERVER_URL}`
   // withCredentials: true // => you might need this option if using cookies and sessions
 });
  
@@ -26,22 +26,25 @@ const uploadImage = (file) => {
 };
  
 const uploadProductoBase = (file) => {
-  return api.post("/productobase/upload", file)
+  return api.post("/productosbase/upload", file)
     .then(res => {
       console.log (res.data)
     return res.data
     })
     .catch(errorHandler);
 };
+
+
 const createArtesania= (newArtesania) => {
   return api.post("/artesania", newArtesania)
     .then(res => res.data)
-    .catch(errorHandler);
+    
 };
  
 export default {
   getArtesania,
   uploadImage,
   createArtesania,
-  uploadProductoBase
+  uploadProductoBase,
+  
 };

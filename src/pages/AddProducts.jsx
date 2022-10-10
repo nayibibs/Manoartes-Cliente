@@ -4,14 +4,12 @@ import {  Input } from '@chakra-ui/react'
 import {
   Button,
   Center,
-  Flex,
   Heading,
   Stack,
-  HStack, 
-  VStack,
   useColorModeValue,
 } from '@chakra-ui/react';
 import service from "../api/service"
+
 
  
 const API_URL = "http://localhost:5005";
@@ -24,6 +22,9 @@ function AddProductos(props) {
   const [price, setPrice] = useState("")
   const [materials, setMaterials] = useState("")
  
+  
+  
+
   const handleFileUpload = (e) => {
     console.log("The file to be uploaded is: ", e.target.files[0]);
 
@@ -55,6 +56,7 @@ function AddProductos(props) {
         setDescription("");
         setImageUrl("")
         setPrice("")
+        setMaterials("")
         props.refreshProductos(); 
       })
 
@@ -64,38 +66,9 @@ function AddProductos(props) {
   
   return (
     <div className="AddProductos">
-      
-      {/*<Heading as='h5' size='sm' color="purple.500">Añadir Producto</Heading> 
- 
-      <form onSubmit={handleSubmit}>  
-
-      <Stack spacing={4}>
-         <Input type="text"
-         focusBorderColor='pink.400'
-         placeholder='Title'
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}/>
- 
-         <Input
-          type="text"
-          name="description"
-          placeholder="description"
-          focusBorderColor='pink.400'
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        
-       <Stack direction='row' spacing={4} align='center'>
-      <Button  type="submit" colorScheme='purple' variant='solid'>
-         Submit
-  </Button>
-  /</Stack>
-        
-        </Stack>
-      </form>*/}
+          
       <form onSubmit={handleSubmit}>
-      <Center py={8} className="añadirProducto">
+      <Center py={10} className="añadirProducto">
           <Stack
           borderWidth="1px"
           borderRadius="lg"
@@ -113,19 +86,19 @@ function AddProductos(props) {
             alignItems="center"
             p={1}
             pt={2}>
-            <Heading fontSize={'2xl'} fontFamily={'body'}>
+            <Heading fontSize={'2xl'} fontFamily={'body'} color={"purple.500"}>
               Añadir un producto
             </Heading>
             <Input type="text"
             focusBorderColor='pink.400'
-            placeholder='Title'
+            placeholder='nombre del producto'
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}/>
               <Input
               type="text"
               name="description"
-              placeholder="description"
+              placeholder="descripcion del producto"
               focusBorderColor='pink.400'
               value={description}
              onChange={(e) => setDescription(e.target.value)}
@@ -145,11 +118,15 @@ function AddProductos(props) {
               focusBorderColor='pink.400'
               value={materials}
              onChange={(e) => setMaterials(e.target.value)}
-              />        
+              /> 
+               <Stack>
+              <Input type='file' name="imagenUrl" 
+               onChange={(e) => handleFileUpload(e)}  />
+               </Stack>       
               <Button
                type="submit"
                 flex={1}
-                fontSize={'sm'}
+                fontSize={'xl'}
                 rounded={'full'}
                 color={'purple.500'}
                 _focus={{
@@ -160,10 +137,10 @@ function AddProductos(props) {
                 }}>
                 Añadir
               </Button>
-
-           
               </Stack>
+              
             </Stack>
+            
         </Center>
       </form>
     </div>

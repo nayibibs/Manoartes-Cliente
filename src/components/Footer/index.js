@@ -7,7 +7,7 @@ import {
     useColorModeValue,
     VisuallyHidden,
   } from '@chakra-ui/react';
-  import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
+  import { FaInstagram, FaFacebook, } from 'react-icons/fa';
   import logo from "../../images/logo1.png"
  
   

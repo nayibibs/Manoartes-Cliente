@@ -14,12 +14,17 @@ import {
     useColorModeValue,
   } from '@chakra-ui/react';
  
-const API_URL = "http://localhost:5005";
+const API_URL = `${process.env.REACT_APP_SERVER_MY_URL}`;
  
-function EditProducts(props) {
+function EditProducts() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [imageUrl, setImageUrl] = ("")
+  const [price, setPrice] = useState("")
+  const [materials, setMaterials] = useState("")
   
+ 
+
   const { productoId } = useParams();
   const navigate = useNavigate();  
 
@@ -30,6 +35,10 @@ function EditProducts(props) {
         const oneProducto = response.data;
         setTitle(oneProducto.title);
         setDescription(oneProducto.description);
+        setImageUrl(oneProducto.imageUrl);
+        setPrice(oneProducto.price);
+        setMaterials(oneProducto.materials);
+        
       })
       .catch((error) => console.log(error));
     
@@ -38,7 +47,7 @@ function EditProducts(props) {
   const handleFormSubmit = (e) => {                     
     e.preventDefault();
     // Create an object representing the body of the PUT request
-    const requestBody = { title, description };
+    const requestBody = { title, description, imageUrl, price, materials };
  
     // Make a PUT request to update the product
     axios
@@ -64,36 +73,16 @@ function EditProducts(props) {
 
   return (
     <div className="EditProducts">
-      {/*<h3>Editar el producto</h3>
- 
-      <form onSubmit={handleFormSubmit}>      
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        
-        <label>Description:</label>
-        <textarea
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
- 
-        <button type="submit">Update Product</button>
-        <button onClick={deleteProducto}>Delete Producto</button>
-      </form>*/}
+   
       <form onSubmit={handleFormSubmit}>  
       <Flex
       minH={'100vh'}
       align={'center'}
       justify={'center'}
-      bg={useColorModeValue('purple.100', 'purple.800')}>
+      >
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading color={"purple.300"} fontSize={'4xl'}>Editar el Producto</Heading>
+          <Heading color={"purple.400"} fontSize={'4xl'}>Editar el Producto</Heading>
           </Stack>
         <Box
           rounded={'lg'}
@@ -101,19 +90,33 @@ function EditProducts(props) {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <FormControl id="title">
-              <FormLabel>Titulo</FormLabel>
+            <FormControl id="title" >
+              <FormLabel color={"white"}>Titulo</FormLabel>
               <Input type="text"
                 name="title"
                 value={title}
                  onChange={(e) => setTitle(e.target.value)} />
             </FormControl>
             <FormControl id="description">
-              <FormLabel>Descripción</FormLabel>
-              <Input type="description" name="description"
+              <FormLabel color={"white"}>Descripción</FormLabel>
+              <Input type="text" name="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}/>
             </FormControl>
+            <FormControl id="price">
+            <FormLabel color={"white"}>Precio</FormLabel>
+              <Input type="text" name="price"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}/>
+            </FormControl>
+            <FormControl id="price">
+            <FormLabel color={"white"}>Materiales</FormLabel>
+              <Input type="text" name="materials"
+                value={materials}
+                onChange={(e) => setMaterials(e.target.value)}/>
+            </FormControl>
+            
+             
             <Stack spacing={10}>
               <Stack
                 direction={{ base: 'column', sm: 'row' }}
