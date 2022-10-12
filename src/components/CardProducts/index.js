@@ -9,6 +9,7 @@ import {
     Button,
   } from '@chakra-ui/react';
  import {Link} from "react-router-dom"
+ 
 
   const IMAGE =
   'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
@@ -17,20 +18,20 @@ import {
 export default function CardProducts(props) {
     console.log(props)
  return (
-    <SimpleGrid columns={3}>
+    <SimpleGrid columns={3} margin={10}>
 <Box
         role={'group'}
         p={6}
         maxW={'330px'}
-        w={'full'}
-        bg={useColorModeValue('purp', 'purple.800')}
+        w={'330px'}
+        bg={useColorModeValue('', 'purple.800')}
         boxShadow={'2xl'}
         rounded={'lg'}
         pos={'relative'}
         zIndex={1}>
         <Box
           rounded={'lg'}
-          mt={-12}
+          mt={0}
           pos={'relative'}
           height={'230px'}
           _after={{
@@ -52,21 +53,21 @@ export default function CardProducts(props) {
           }}>
           <Image
             rounded={'lg'}
-            height={230}
-            width={282}
-            objectFit={'cover'}
-            src={props.img}
+            height={280}
+            width={300}
+            objectFit={''}
+            src={props.imageUrl}
           />
         </Box>
-        <Stack >
-          <Heading color={'purple.800'} fontSize={'2xl'} textTransform={'uppercase'}>
+        <Stack  m={3} >
+          <Heading color={'white.800'} fontSize={'2xl'} textTransform={'uppercase'} marginTop={50} >
             {props.title}
           </Heading>
-          <Heading color={"purple.800"} fontSize={'sm'} fontFamily={'body'} fontWeight={500}>
-          {props.description}
+          <Heading color={"white.800"} fontSize={'sm'} fontFamily={'body'} fontWeight={500} marginTop={1200}>
+          <p  marginTop={1200}>{props.description}</p>
           </Heading>
-          <Stack direction={'row'} align={'center'}>
-            <Text color={"purple.800"} fontWeight={800} fontSize={'xl'} >$ 
+          <Stack>
+            <Text  color={"purple.800"} fontWeight={800} fontSize={'xl'} >$ 
               {props.price}
             </Text>
           </Stack>
@@ -76,12 +77,7 @@ export default function CardProducts(props) {
             <Link to={`/productosbase/${props._id}`}>Detalles                    
             </Link>
       </Button>
-      <Stack direction={"column"} align={"center"} pt={5}>
-          <Button size='xs' colorScheme='purple'> 
-          <Link to={`/productosbase/${props._id}/comments`}> Comentarios                   
-            </Link>
-          </Button>
-          </Stack>
+     
       </Box>
       </SimpleGrid>
       );

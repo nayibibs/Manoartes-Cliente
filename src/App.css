@@ -68,12 +68,10 @@
   text-transform: uppercase;
   margin: auto;
 }
-
-.AddProducts{
-  padding: 100px ;
-  
-}   
-
+   
+.comment{
+  padding: 150px;
+}
 
 footer{
   width: 100%;
@@ -91,9 +89,43 @@ footer{
 }
 
 .ProductList{
-  margin: 50px !important;
+  padding: 50px;
 }
 
 .ProductoCard{
   margin: 20px !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.details-box{
+  text-align: center;
+}
+
+.css-0{
+  text-align: start;
+}
+
+
+
+.content-btn{
+  margin-top: -250px;
+  margin-bottom: 300px;
+  margin-right: 500px;
 }

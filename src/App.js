@@ -70,7 +70,7 @@ export default function App() {
           <Route key={route.path} path={route.path} element={route.element} />
         ))*/}
         <Route path="/" element={<HomePage/>}/>
-        <Route path="/auth/login" element={<LogIn/>}/>
+        <Route path="/auth/login" element={<LogIn authenticate={authenticate}/>}/>
         <Route path="/auth/signup" element={<Signup authenticate={authenticate}/>}/>
         <Route path="/productosbase" element={<ProductList/>}/>
         <Route path="/productosbase/add" element={<AddProductos/>}/>

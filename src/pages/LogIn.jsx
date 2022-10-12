@@ -23,6 +23,7 @@ export default function LogIn({ authenticate }) {
   }
 
   function handleFormSubmission(event) {
+    
     event.preventDefault();
     const credentials = {
       username,
@@ -32,15 +33,16 @@ export default function LogIn({ authenticate }) {
       if (!res.status) {
         return setError({ message: "Invalid credentials" });
       }
+      
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
+      navigate("/");
     });
   }
 
   return (
     <div>
-     <form onSubmit={handleFormSubmission} className="signup__form">
+     <form action="/" onSubmit={handleFormSubmission} className="signup__form">
      <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex p={8} flex={1} align={'center'} justify={'center'}>
         <Stack spacing={4} w={'full'} maxW={'md'}>
@@ -80,9 +82,8 @@ export default function LogIn({ authenticate }) {
               justify={'space-between'}>
               <Checkbox>Recuerdame</Checkbox>
             </Stack>
-            <Button colorScheme={'purple'} variant={'solid'}>
-            Iniciar sesión
-            </Button>
+            
+          <button type="submit">Iniciar Session</button>
           </Stack>
         </Stack>
       </Flex>

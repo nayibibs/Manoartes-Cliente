@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import React from 'react'
 import { Button, Stack, Center, Flex, Heading, Text, Badge,} from '@chakra-ui/react';
+import DetailsProducts from "../components/DetailsProducts";
+import Comments from "../components/Comments";
+
 
  
 const API_URL = `${process.env.REACT_APP_SERVER_MY_URL}`
 
-function ProductsDetails () {
+function ProductsDetails (props) {
   const [productos, setProductos] = useState(null);
   const { productoId } = useParams(); 
  
@@ -29,98 +32,31 @@ function ProductsDetails () {
 
   return (
     <div className="ProductsDetails">
-     {productos  && ( 
-       <>
-       <Center py={6} className="cafe">
-        <Stack
-          borderWidth="1px"
-          borderRadius="lg"
-          w={{ sm: '100%', md: '540px' }}
-          height={{ sm: '476px', md: '20rem' }}
-          direction={{ base: 'column', md: 'row' }}
-          bg={useColorModeValue('purple.100', 'purple.900')}
-          boxShadow={'2xl'}
-          padding={4}
-          >
-          <Flex flex={1} bg="purple.200">
-            <Image
-              objectFit="cover"
-              boxSize="100%"
-              aling="center"
-              src={productos.imgenUrl}
-              alt={"product image"}
-            />
-          </Flex>
-          <Stack
-            flex={1}
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            p={1}
-            pt={2}>
-            <Heading fontSize={'2xl'} fontFamily={'body'}>
-              {productos.title}
-            </Heading>
-            <Text
-              textAlign={'center'}
-              color={useColorModeValue('gray.700', 'gray.400')}
-              px={3}>
-              {productos.description}
-           </Text>
-           <Text
-              textAlign={'center'}
-              color={useColorModeValue('gray.700', 'gray.400')}
-              px={3}> $
-              {productos.price}
-           </Text>
-           <Text
-              textAlign={'center'}
-              color={useColorModeValue('gray.700', 'gray.400')}
-              px={3}> 
-              {productos.materials}
-           </Text>
-            <Stack
-              width={'100%'}
-              mt={'2rem'}
-              direction={'row'}
-              padding={2}
-              justifyContent={'space-between'}
-              alignItems={'center'}>
-           
-            </Stack>
-          </Stack>
-        </Stack>
-      </Center>
-
-       
-       
-       
-       </>
-     )}
-      <Link to={`/productosbase/edit/${productoId}`}>
-      <Stack direction='column' spacing={2} align='center'>
+    {productos?.comments?.map((comment) =>{
+      return <div key={comment._id} className="comment-card"> <h3><strong><em>{comment.name}</em></strong>: </h3><p className='p-comments'> {comment.description}</p></div>
+    })}
+    
+    <Stack>
       
-      <Button  type="submit" colorScheme='purple' variant='solid'>
+      <DetailsProducts  key={productoId} {...productos}/>
+    </Stack>
+
+  
+      <Stack direction='row' spacing={2} alignItems={'start'} justifyContent={'end'} className="content-btn">
+       <Link to={`/productosbase/edit/${productoId}`}>
+      
+      <Button  type="submit" colorScheme='purple' variant='solid' className="btn-products-details">
          Editar
   </Button>
-  /</Stack>
       </Link> 
-      
-      <Stack
-              width={'100%'}
-              mt={'2rem'}
-              direction={'center'}
-              padding={2}
-              justifyContent={'center'}
-              alignItems={'center'}>
-        <Link to="/productosbase">
-      
-      <Button  type="submit" colorScheme='purple' variant='solid'>
+  <Link to="/productosbase">
+      <Button  type="submit" colorScheme='purple' variant='solid' className="btn-products-details">
          Regresar
      </Button>
- 
-      </Link>
-     /</Stack>
+  </Link>
+  /</Stack>
+      
+         <Comments productoId={productoId}></Comments>
     </div>
   );
 }

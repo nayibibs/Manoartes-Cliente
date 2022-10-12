@@ -17,26 +17,30 @@ import {
     ListItem,
   } from '@chakra-ui/react';
   import { MdLocalShipping } from 'react-icons/md';
-  import Card4 from "../../images/card4.jpg"
   
   
-  export default function DetailsProducts() {
+  
+  export default function DetailsProducts(props) {
+    console.log(props)
+
     return (
       <Container maxW={'7xl'}>
         <SimpleGrid
           columns={{ base: 1, lg: 2 }}
           spacing={{ base: 8, md: 10 }}
-          py={{ base: 18, md: 24 }}>
+          py={{ base: 18, md: 24 }}
+          className="details-box">
           <Flex>
             <Image
+            resize={'containt'}
               rounded={'md'}
               alt={'product image'}
               src={
-                Card4
+               props.imageUrl
               }
-              fit={'cover'}
-              align={'center'}
-              w={'100%'}
+              objectFit={'coer'}
+              align={'start'}
+              w={'90%'}
               h={{ base: '100%', sm: '400px', lg: '500px' }}
             />
           </Flex>
@@ -44,10 +48,11 @@ import {
             <Box as={'header'}>
               <Heading
                 lineHeight={1.1}
+                textalign={'start'}
                 fontWeight={600}
                 color={"purple.600"}
                 fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-                Bandeja
+                {props.title}
               </Heading>
             </Box>
   
@@ -73,21 +78,21 @@ import {
                 <List spacing={2}>
                   <ListItem>
                     <Text  as={'span'}  color={"purple.600"} fontWeight={'bold'}>
-                      Descripción:
+                      Descripcion:
                     </Text>{' '}
-                    
+                    {props.description}
                   </ListItem>
                   <ListItem>
                     <Text as={'span'}  color={"purple.600"} fontWeight={'bold'}>
                       Precio:
                     </Text>{' '}
-                    $300.00
+                    $ {props.price}
                   </ListItem>
-                  <ListItem>
+                  <ListItem className="details-box">
                     <Text as={'span'}  color={"purple.600"} fontWeight={'bold'}>
                       Material:
                     </Text>{' '}
-                    madera
+                    {props.materials}
                   </ListItem>
                   
                 </List>
@@ -95,9 +100,9 @@ import {
             </Stack>
   
             
-            <Stack direction="row" alignItems="center" color={"purple.600"} justifyContent={'center'}>
+            <Stack direction="row" alignItems="start" color={"purple.600"} justifyContent={'start'}>
               <MdLocalShipping />
-              <Text>Una semana de entrega</Text>
+              <Text textAlign={'start'}>Una semana de entrega</Text>
             </Stack>
           </Stack>
         </SimpleGrid>

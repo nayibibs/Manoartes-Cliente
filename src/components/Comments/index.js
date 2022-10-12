@@ -1,7 +1,8 @@
 import { useState } from "react";
 import React from "react"
 import axios from "axios";
-import { Button, Heading, FormControl,FormLabel, Input } from "@chakra-ui/react";
+import { Button, Heading, FormControl,FormLabel, Input, Center, Container } from "@chakra-ui/react";
+
 
 
 
@@ -19,40 +20,45 @@ function Comments(props) {
     const requestBody = { name, description, productoId };
  
     axios
-      .post(`${API_URL}/${productoId}comments`, requestBody) 
+      .post(`${API_URL}/productosbase/${productoId}/comments`, requestBody) 
       .then((response) => {
+        console.log(response)
         setName("");
         setDescription("");
-        props.refreshForom();
+        
       })
       .catch((error) => console.log(error));
   };
 
  
+ 
 
   return (
-    <div className="comments">
-      <Heading>Deja tu comentario</Heading>
+    <div className="comment">
+
+      <Heading  m={20} p={10} fontFamily={"cursive"} color={"purple.400"}>Si te gusta dejanoslo saber</Heading>
+      
      <form onSubmit={handleSubmit}>
-     <>
+     <><Center m={10}>
+      <Container>
         <FormControl>
-              <FormLabel>Nombre</FormLabel>
+              <FormLabel fontFamily={"cursive"} color={"purple.700"}>Nombre</FormLabel>
               <Input type={"text"} placeholder='name' value={name}
           onChange={(e) => setName(e.target.value)}/>
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Escribe tu comentario</FormLabel>
-              <Input placeholder='description' value={description}
+              <FormLabel fontFamily={"cursive"} color={"purple.700"}>Escribe tu comentario</FormLabel>
+              <Input type={"text"} value={description}
           onChange={(e) => setDescription(e.target.value)}/>
             </FormControl>
-          
-
-          
-            <Button  type="submit" colorScheme='purple.400' mr={3}>
-              Salvar
-            </Button>
+      </Container>
+      </Center>
            
+            <Button  type="submit" color='purple.500' m={5} mr={3}>
+              Opinar
+            </Button>
+             
         
     </>
     </form>

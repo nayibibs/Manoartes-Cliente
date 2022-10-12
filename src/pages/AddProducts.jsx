@@ -57,7 +57,7 @@ function AddProductos(props) {
         setImageUrl("")
         setPrice("")
         setMaterials("")
-        
+       
       })
 
       .catch((error) => console.log(error));
@@ -68,7 +68,7 @@ function AddProductos(props) {
     <div className="AddProductos">
           
       <form onSubmit={handleSubmit}>
-      <Center py={10} className="añadirProducto">
+      <Center py={10} mt={50} p={250} className="añadirProducto">
           <Stack
           borderWidth="1px"
           borderRadius="lg"
@@ -122,7 +122,8 @@ function AddProductos(props) {
                <Stack>
               <Input type='file' name="imagenUrl" 
                onChange={(e) => handleFileUpload(e)}  />
-               </Stack>       
+               </Stack> 
+                   <img  src={imageUrl}></img>  
               <Button
                type="submit"
                 flex={1}

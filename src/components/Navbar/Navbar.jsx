@@ -55,11 +55,11 @@ export default function NavBar(props) {
          <a href='/'> <img src={Logo1} width={40} height={40}/></a>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            <DesktopNav />
+            <DesktopNav user={user} />
           </Flex>
         </Flex>
             {user?.username}
-            {user && <Button margin={"0 0px 0 20px"} colorScheme='purple' size='sm' onClick={handleLogout}> Log out </Button>}
+            {user && <Button margin={"0 0px 0 20px"} colorScheme='purple' size='sm' onClick={handleLogout}> Salir </Button>}
             {!user &&   
                  <Stack
           flex={{ base: 1, md: 0 }}
@@ -73,7 +73,7 @@ export default function NavBar(props) {
             variant={'link'}
             color={'purple.700'}
             href={'/auth/login'}>
-            Log In
+            Acceder
           </Button>
           <Button
             as={'a'}
@@ -86,7 +86,7 @@ export default function NavBar(props) {
             _hover={{
               bg: 'purple.400',
             }}>
-            Sign Up
+            Registrarse
           </Button>
           
         </Stack>}
@@ -100,11 +100,11 @@ export default function NavBar(props) {
   );
 }
 
-const DesktopNav = () => {
+const DesktopNav = (props) => {
   const linkColor = useColorModeValue('purple.600', 'purple.200');
   const linkHoverColor = useColorModeValue('purple.400', 'purple.100');
   const popoverContentBgColor = useColorModeValue('purple.100', 'purple.800');
-
+console.log('user props',props)
   return (
     <Stack direction={'row'} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
@@ -125,7 +125,7 @@ const DesktopNav = () => {
               </Link>
             </PopoverTrigger>
 
-            {navItem.children && (
+            {navItem.children  && (
               <PopoverContent
                 border={0}
                 boxShadow={'xl'}
@@ -135,7 +135,7 @@ const DesktopNav = () => {
                 minW={'sm'}>
                 <Stack>
                   {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
+<DesktopSubNav key={child.label} {...child} />
                   ))}
                 </Stack>
               </PopoverContent>
@@ -264,11 +264,14 @@ const NAV_ITEMS = [
       {
         label: 'Lista de Productos',
         href: '/productosbase',
-      },
+      }, 
+      
        {
         label: 'Añadir un nuevo producto',
         href: '/productosbase/add',
+        role:'admin'
       },
+   
    
     ],
   },
