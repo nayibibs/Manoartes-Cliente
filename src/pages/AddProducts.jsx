@@ -13,7 +13,7 @@ import service from "../api/service"
 
 
  
-const API_URL = "http://localhost:5005";
+const API_URL = `${process.env.REACT_APP_SERVER_MY_URL}`;
 
  
 function AddProductos(props) {
@@ -28,7 +28,7 @@ function AddProductos(props) {
   
 
   const handleFileUpload = (e) => {
-    console.log("The file to be uploaded is: ", e.target.files[0]);
+    
 
    const uploadData = new FormData();
 

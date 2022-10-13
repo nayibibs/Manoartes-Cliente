@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import CardProducts from "../components/CardProducts";
-import { Heading,Badge, Box, SimpleGrid, Button } from "@chakra-ui/react";
-import Comments from "../components/Comments";
+import { Heading, SimpleGrid, } from "@chakra-ui/react";
+
 
 
 
@@ -35,7 +34,7 @@ function ProductList() {
       <SimpleGrid columns={3} m={"40px"} >
       
         {productos.map((productos) => {
-          console.log(productos)
+          
           return (
           <CardProducts key={productos._id} {...productos}></CardProducts>
 

@@ -24,11 +24,11 @@ export default function Details(){
   }, []);
 
   return (
-   <div>
+   <div >
     <Heading m={10} lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }} color={'purple.500'}>
     Productos Pedidos 
   </Heading>
-  <SimpleGrid columns={3} margin={0}>  
+  <SimpleGrid columns={3} pb={500}>  
    
          
       {artesania &&
