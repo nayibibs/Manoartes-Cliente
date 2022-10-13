@@ -104,7 +104,7 @@ const DesktopNav = (props) => {
   const linkColor = useColorModeValue('purple.600', 'purple.200');
   const linkHoverColor = useColorModeValue('purple.400', 'purple.100');
   const popoverContentBgColor = useColorModeValue('purple.100', 'purple.800');
-console.log('user props',props)
+
   return (
     <Stack direction={'row'} spacing={4}>
       {NAV_ITEMS.map((navItem) => (

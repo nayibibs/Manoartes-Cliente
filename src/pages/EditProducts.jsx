@@ -53,7 +53,7 @@ function EditProducts() {
     axios
       .put(`${API_URL}/api/productosbase/${productoId}`, requestBody)
       .then((response) => {
-        navigate(`/productosbase/${productoId}`)
+        navigate(`/productosbase`)
       });
   };
 

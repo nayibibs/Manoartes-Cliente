@@ -1,18 +1,14 @@
 import {
     Box,
-    chakra,
     Container,
     Stack,
     Text,
     Image,
     Flex,
-    VStack,
-    Button,
     Heading,
     SimpleGrid,
     StackDivider,
     useColorModeValue,
-    VisuallyHidden,
     List,
     ListItem,
   } from '@chakra-ui/react';
@@ -21,7 +17,7 @@ import {
   
   
   export default function DetailsProducts(props) {
-    console.log(props)
+    
 
     return (
       <Container maxW={'7xl'}>

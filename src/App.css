@@ -70,7 +70,10 @@
 }
    
 .comment{
-  padding: 150px;
+  padding: 0;
+  background-color: rgb(165, 212, 237);
+ 
+    display: inline-block;
 }
 
 footer{
@@ -128,4 +131,56 @@ footer{
   margin-top: -250px;
   margin-bottom: 300px;
   margin-right: 500px;
+}
+
+.artesania-details{
+  margin: 50px;
+ 
+}
+
+/*-----------------*/
+
+.title_product{
+  font-size: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.caja-product{
+ *background: #d7d7d7;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.comment{
+  margin-bottom: 100px;
+}
+
+.comment-card div{
+  text-align: start;
+  width: 100%;
+  margin-bottom: -20px;
+}
+
+.comment-card{
+  text-align: start !important;
+}
+
+.comment-card:last-child{
+  margin-bottom: 100px;
+}
+
+.btn-login{
+ background-color: rgb(162, 77, 166);
+ padding: 15px;
+ border: none;
+ border-radius: 20px;
+ color: white;
+ cursor: pointer;
+ font-size: 25px;
+}
+
+.preview-image{
+  width: 200px;
+
 }

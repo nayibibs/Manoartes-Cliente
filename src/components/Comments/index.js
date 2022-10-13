@@ -1,7 +1,8 @@
 import { useState } from "react";
 import React from "react"
 import axios from "axios";
-import { Button, Heading, FormControl,FormLabel, Input, Center, Container } from "@chakra-ui/react";
+import { Button, Heading, FormControl,FormLabel, Input, Center, Container, Stack } from "@chakra-ui/react";
+
 
 
 
@@ -9,10 +10,13 @@ import { Button, Heading, FormControl,FormLabel, Input, Center, Container } from
 const API_URL = `${process.env.REACT_APP_SERVER_URL}`;
 
 
+
+
 function Comments(props) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-
+  
+  
   
   const handleSubmit = (e) => {     
     e.preventDefault();
@@ -22,9 +26,10 @@ function Comments(props) {
     axios
       .post(`${API_URL}/productosbase/${productoId}/comments`, requestBody) 
       .then((response) => {
-        console.log(response)
+        
         setName("");
         setDescription("");
+        props.refreshComments();
         
       })
       .catch((error) => console.log(error));
@@ -35,11 +40,11 @@ function Comments(props) {
 
   return (
     <div className="comment">
-
-      <Heading  m={20} p={10} fontFamily={"cursive"} color={"purple.400"}>Si te gusta dejanoslo saber</Heading>
+      
+      <Heading  mt={0} p={10} fontFamily={"cursive"} color={"purple.400"}>Si te gusta dejanoslo saber</Heading>
       
      <form onSubmit={handleSubmit}>
-     <><Center m={10}>
+     <><Center m={2}>
       <Container>
         <FormControl>
               <FormLabel fontFamily={"cursive"} color={"purple.700"}>Nombre</FormLabel>

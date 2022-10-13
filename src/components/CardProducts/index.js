@@ -16,7 +16,7 @@ import {
 
 
 export default function CardProducts(props) {
-    console.log(props)
+   
  return (
     <SimpleGrid columns={3} margin={10}>
 <Box
@@ -60,10 +60,10 @@ export default function CardProducts(props) {
           />
         </Box>
         <Stack  m={3} >
-          <Heading color={'white.800'} fontSize={'2xl'} textTransform={'uppercase'} marginTop={50} >
+          <Heading color={'purple.800'} fontSize={'2xl'} textTransform={'uppercase'} marginTop={50} >
             {props.title}
           </Heading>
-          <Heading color={"white.800"} fontSize={'sm'} fontFamily={'body'} fontWeight={500} marginTop={1200}>
+          <Heading color={"purple.800"} fontSize={'sm'} fontFamily={'body'} fontWeight={500} marginTop={1200}>
           <p  marginTop={1200}>{props.description}</p>
           </Heading>
           <Stack>
@@ -73,7 +73,7 @@ export default function CardProducts(props) {
           </Stack>
         </Stack>
         
-        <Button size='xs' colorScheme='purple'> 
+        <Button size='lg' colorScheme='purple'> 
             <Link to={`/productosbase/${props._id}`}>Detalles                    
             </Link>
       </Button>

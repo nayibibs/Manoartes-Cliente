@@ -25,7 +25,7 @@ function AddArtesania (){
     service
       .uploadImage(uploadData)
       .then(response => {
-        console.log("response is: ", response);
+        //console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
         setImageUrl(response.fileUrl);
       })

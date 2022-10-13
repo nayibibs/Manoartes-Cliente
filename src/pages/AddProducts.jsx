@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import {  Input } from '@chakra-ui/react'
+import { useParams, useNavigate } from "react-router-dom"
+import {  color, Input } from '@chakra-ui/react'
 import {
   Button,
   Center,
@@ -22,7 +23,8 @@ function AddProductos(props) {
   const [price, setPrice] = useState("")
   const [materials, setMaterials] = useState("")
  
-  
+ 
+  const navigate = useNavigate();  
   
 
   const handleFileUpload = (e) => {
@@ -40,6 +42,7 @@ function AddProductos(props) {
        console.log("response is: ", response);
        // response carries "fileUrl" which we can use to update the state
        setImageUrl(response.fileUrl);
+      
      })
      .catch(err => console.log("Error while uploading the file: ", err));
  };
@@ -57,7 +60,7 @@ function AddProductos(props) {
         setImageUrl("")
         setPrice("")
         setMaterials("")
-       
+        navigate("/productosbase")
       })
 
       .catch((error) => console.log(error));
@@ -68,12 +71,12 @@ function AddProductos(props) {
     <div className="AddProductos">
           
       <form onSubmit={handleSubmit}>
-      <Center py={10} mt={50} p={250} className="añadirProducto">
+      <Center py={10} mt={-150} p={250} className="añadirProducto">
           <Stack
           borderWidth="1px"
           borderRadius="lg"
           w={{ sm: '100%', md: '540px' }}
-          height={{ sm: '476px', md: '20rem' }}
+
           direction={{ base: 'column', md: 'row' }}
           bg={useColorModeValue('purple.100', 'purple.900')}
           boxShadow={'2xl'}
@@ -123,18 +126,21 @@ function AddProductos(props) {
               <Input type='file' name="imagenUrl" 
                onChange={(e) => handleFileUpload(e)}  />
                </Stack> 
-                   <img  src={imageUrl}></img>  
+                <div className="preview-image">   <img w={200} h={200} src={imageUrl}></img>  <br></br></div>
               <Button
                type="submit"
+               padding={5}
+               w={200}
                 flex={1}
                 fontSize={'xl'}
-                rounded={'full'}
+                rounded={20}
                 color={'purple.500'}
                 _focus={{
                   bg: 'purple.200',
                 }}
                 _hover={{
-                    bg: 'purple.500'
+                    bg: 'purple.500',
+                    color: 'white'
                 }}>
                 Añadir
               </Button>

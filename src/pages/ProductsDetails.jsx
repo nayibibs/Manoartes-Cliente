@@ -3,9 +3,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import React from 'react'
-import { Button, Stack, Center, Flex, Heading, Text, Badge,} from '@chakra-ui/react';
+import { Button, Stack, Heading, Box,} from '@chakra-ui/react';
 import DetailsProducts from "../components/DetailsProducts";
 import Comments from "../components/Comments";
+import StyleComment from '../components/StyleComment'
 
 
  
@@ -32,20 +33,15 @@ function ProductsDetails (props) {
 
   return (
     <div className="ProductsDetails">
-    {productos?.comments?.map((comment) =>{
-      return <div key={comment._id} className="comment-card"> <h3><strong><em>{comment.name}</em></strong>: </h3><p className='p-comments'> {comment.description}</p></div>
-    })}
-    
+   
     <Stack>
       
       <DetailsProducts  key={productoId} {...productos}/>
     </Stack>
 
-  
       <Stack direction='row' spacing={2} alignItems={'start'} justifyContent={'end'} className="content-btn">
        <Link to={`/productosbase/edit/${productoId}`}>
-      
-      <Button  type="submit" colorScheme='purple' variant='solid' className="btn-products-details">
+            <Button  type="submit" colorScheme='purple' variant='solid' className="btn-products-details">
          Editar
   </Button>
       </Link> 
@@ -54,9 +50,20 @@ function ProductsDetails (props) {
          Regresar
      </Button>
   </Link>
-  /</Stack>
-      
-         <Comments productoId={productoId}></Comments>
+  </Stack>
+
+        <div style={{display:'flex', flexDirection: 'column', justifyContent:'start'}}>
+          <Heading fontFamily={"cursive"}  color={"purple.600"}>Reseñas de nuestros clientes</Heading>
+
+         {productos?.comments?.map((comment) =>{
+      return <Box key={comment._id} className="comment-card">
+      <StyleComment name ={comment.name} description={comment.description} />
+       </Box>
+    })}
+        </div>
+         <Comments productoId={productoId} refreshComments={getProductos} className="comentario"></Comments>
+    
+          
     </div>
   );
 }

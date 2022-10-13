@@ -83,11 +83,11 @@ export default function LogIn({ authenticate }) {
               <Checkbox>Recuerdame</Checkbox>
             </Stack>
             
-          <button type="submit">Iniciar Session</button>
+          <button className="btn-login" type="submit">Iniciar Session</button>
           </Stack>
         </Stack>
       </Flex>
-      <Flex flex={1}>
+      <Flex flex={1} p={20}>
         <img src={LoginImagen}  width={800} height={500}/>
       </Flex>
     </Stack>

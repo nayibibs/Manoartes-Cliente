@@ -1,5 +1,4 @@
 import {
-  Flex,
   FormControl,
   Heading,
   Stack,
@@ -29,7 +28,7 @@ export default function Details(){
     <Heading m={10} lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }} color={'purple.500'}>
     Productos Pedidos 
   </Heading>
-  <SimpleGrid columns={3} margin={10}>  
+  <SimpleGrid columns={3} margin={0}>  
    
          
       {artesania &&
@@ -40,7 +39,7 @@ export default function Details(){
         w={'full'}
         maxW={'md'}
         rounded={'xl'}
-        boxShadow={'lg'}
+        className="caja-product"
         key={artesanias?.title}
         p={6}
         my={6}
@@ -48,13 +47,13 @@ export default function Details(){
         
         <FormControl id="producto">
           <Stack  direction={['column', "center"]}   spacing={1}>
-          <Image src={artesanias.imageUrl} alt="artesania" width="200" />
+          <Image src={artesanias.imageUrl} alt="artesania" width={200} height={200} margin={"auto"}/>
           </Stack>
           
         </FormControl>
         <FormControl id="producto" >
-        <Text fontSize='lg' noOfLines={1} color='purple.600'>{artesanias.title}</Text>
-        <Text fontSize='lg' noOfLines={1} color='purple.600'>{artesanias.description}</Text>
+        <Text noOfLines={1} color='purple.600' className='title_product'>{artesanias.title}</Text>
+        <Text noOfLines={1} color='purple.600' className='description_product'>{artesanias.description}</Text>
         </FormControl>
        
         

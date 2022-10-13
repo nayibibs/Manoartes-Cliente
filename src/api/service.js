@@ -19,7 +19,7 @@ const getArtesania = () => {
 const uploadImage = (file) => {
   return api.post("/artesania/upload", file)
     .then(res => {
-      console.log (res.data)
+     
     return res.data
     })
     .catch(errorHandler);
@@ -28,7 +28,7 @@ const uploadImage = (file) => {
 const uploadProductoBase = (file) => {
   return api.post("/productosbase/upload", file)
     .then(res => {
-      console.log (res.data)
+     
     return res.data
     })
     .catch(errorHandler);
